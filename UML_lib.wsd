@@ -1,0 +1,131 @@
+'Диаграмма последовательности
+@startuml
+title Проект\nКнижный магазин
+skinparam backgroundColor lightblue
+actor User #d1407d
+note right of User #03f4f2
+Проект_Книжный_магазин
+end note
+participant "Книжный магазин\nГлавная страница" as A #d0f782
+participant "Список книг"  as B #e794b0
+participant "Книга" as C #ffeb3b
+
+User -> A : переход на гл/страницу
+A -> B : переход в список книг
+B -> C : переход к конкретной книге
+C -[#0000FF]> B : возврат в список книг
+B -[#0000FF]> User :  выход
+@enduml
+
+
+
+
+'Диаграмма классов
+@startuml
+title Проект\nКнижный магазин 
+skinparam backgroundColor lightblue
+class User #36c8e7
+package Главная <<Rectangle>> #ee77f7 {
+     }
+package booksArray <<Database>> #30dd3c {
+class Список_книг #f9f12e { 
+HTML_and_CSS 
+HTML5
+HeadFirs_HTML5_Programming
+HeadFirs_JavaScript_Programming
+JQueryInAction
+Pro_HTML5_with_Visual_Studio
+HTML5_for_Web_Designers
+
+}
+class HTML_and_CSS  #b57af7 {
+}
+class HTML5  #b57af7 {
+}
+class JQueryInAction  #b57af7 {
+}
+User -> Главная : на главную страницу
+Главная -> Список_книг : в список книг
+Список_книг -> HTML_and_CSS : на конкретную книгу
+HTML_and_CSS -[#0000FF]> Список_книг : назад в список
+Список_книг -[#0000FF]> User : выход
+@enduml
+
+@startuml
+class Список_книг {
+     HTML and CSS
+     HTML5
+     HeadFirs HTML5 Programming
+     HeadFirs JavaScript Programming
+     JQueryInAction
+     Pro HTML5 with Visual Studio
+     HTML5 for Web Designers
+}
+@enduml
+
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+participant "Книжный магазин" as K
+participant "HTML5" as A
+participant "HTMLandCSS" as B
+participant "JavaScript" as C
+participant "HTMLforWeb" as D
+participant "VisualStudio" as E
+K -> A
+note left
+попадаем на страницу книги
+end note
+activate A
+K -> B
+note left
+попадаем на страницу книги
+end note
+activate B
+K -> C
+note left
+попадаем на страницу книги
+end note
+activate C
+K -> D
+note left
+попадаем на страницу книги
+end note
+activate D
+K -> E
+note left
+попадаем на страницу книги
+end note
+activate E
+E --> K
+note right
+возвращаемся на глав/страницу
+end note
+deactivate E
+D --> K
+note right
+возвращаемся на глав/страницу
+end note
+deactivate D
+C --> K
+note right
+возвращаемся на глав/страницу
+end note
+deactivate C
+B --> K
+note right
+возвращаемся на глав/страницу
+end note
+deactivate B
+A --> K
+note right
+возвращаемся на глав/страницу
+end note
+deactivate A
+@enduml
+
+
+
+
